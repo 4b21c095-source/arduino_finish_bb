@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Frequency Scanner - 聲波與頻率互動介面</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ex1.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">☆聲聲聲聲聲.....波★!</div>
+
+  <div class="nav-right">
+    <a href="#home">◦主頁•</a>
+    <a href="#intro">◦介紹•</a>
+    <a href="00.html">◦掃描•</a>
+    <a href="#game">◦小遊戲•</a>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <h1 class="hero-title">聲聲聲聲聲.....波 + 頻頻頻頻...頻率</h1>
+</section>
+
+<div class="circle"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+<div class="circle5"></div>
+<div class="square"></div>
+<div class="square2"></div>
+
+<svg class="star star1" viewBox="0 0 100 100">
+  <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35"/>
+</svg>
+<svg class="star star2" viewBox="0 0 100 100">
+  <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35"/>
+</svg>
+        
+
+<section id="intro" class="intro">
+  <p class="p-1">
+    聲波是一種能量的傳遞形式 透過頻率與振幅形成不同的感知 <br>
+    在這個互動中 你將透過實際操作 理解聲音跟頻率之間的關係
+  </p>
+
+  <h2 class="section-title">..聲波模型..★</h2>
+
+  <div class="hz-gallery">
+    <div class="hz-item" onclick="showResult('250hz')">
+      <img src="images/images:hz01.png" alt="250Hz">
+      <p>250HZ</p>
+    </div>
+    <div class="hz-item" onclick="showResult('500hz')">
+      <img src="images/images:hz02.png" alt="500Hz">
+      <p>500HZ</p>
+    </div>
+    <div class="hz-item" onclick="showResult('1000hz')">
+      <img src="images/images:hz03.png" alt="1000Hz">
+      <p>1000HZ</p>
+    </div>
+    <div class="hz-item" onclick="showResult('2000hz')">
+      <img src="images/images:hz04.png"2000Hz">
+      <p>2000HZ</p>
+    </div>
+    <div class="hz-item" onclick="showResult('3000hz')">
+      <img src="images/images:hz05.png" alt="3000Hz">
+      <p>3000HZ</p>
+    </div>
+  </div>
+
+  <div id="hzResultArea" style="text-align: center; margin-top: 30px;">
+    <h3 id="hzText" class="">點擊上方頻率模型聽聽看！</h3>
+    <img id="resultImage" src="" style="display: none; margin: 15px auto; max-width: 300px; border-radius: 8px;">
+    <div class="sound-buttons" style="margin-top: 15px;"></div>
+  </div>
+</section>
+
+
+<section id="game" class="game-section">
+
+  <h2 class="section-title">互動の小遊戲././</h2>
+
+  <div class="game-cards">
+
+    <a href="/clap01.html" class="game-card">
+      <div class="game-number">01 大小聲</div>
+      <div class="game-text">可以叫、可以拍手 把氣球弄破!</div>
+    </a>
+
+    <a href="/clap02.html" class="game-card">
+      <div class="game-number">02 拍破泡泡★</div>
+      <div class="game-text">拍手 跟著速度把泡泡刺破</div>
+    </a>
+
+  </div>
+
+  <div style="display: none;">
+    <video id="camera" autoplay playsinline width="1" height="1"></video>
+  </div>
+
+  <div class="bottom-line"></div>
+  <p class="thanks"><br>謝謝大家☆... <br><br>
+    謝家綺 賴政坤 邱靖媗 陳怡琳
+  </p>
+
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="ex1.js"></script>
+
+<script>
+  const socket = io();
+  socket.on('connect', () => {
+    console.log('✅ 恭喜！ex1.html 首頁主介面已成功接通 Node.js 伺服器！');
+  });
+</script>
+
+</body>
+</html>

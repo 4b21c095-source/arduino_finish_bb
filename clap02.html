@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>Clap Tempo Game - Ice Blue Edition</title>
+    <link rel="stylesheet" href="clap02.css">
+</head>
+<body>
+
+    <button id="exitBtn" onclick="window.location.href='/ex1.html'" style="
+      display: block; 
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 9999;
+      backdrop-filter: blur(5px);
+    ">
+      ← BACK
+    </button>
+
+    <div id="welcome-screen">
+        <h1>Clap! Clap!!!!</h1>
+        <button id="startBtn">GO!!!!</button>
+        <p class="sub">tap the rhythm</p>
+    </div>
+    
+    <div id="visualizer-container">
+        <span class="vis-title">SIGNAL FREQ</span>
+        <canvas id="micVisualizer" width="150" height="60"></canvas>
+    </div>
+
+    <div id="gameArea">
+        <div id="bgBubbleArea"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="clap02.js"></script>
+</body>
+</html>

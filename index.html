@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino 訊號即時監控</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        #data-display {
+            font-size: 48px;
+            color: #007bff;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .status {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Arduino 即時數據</h1>
+        <p class="status">● 伺服器連線狀態：<span id="status">連線中...</span></p>
+        <hr>
+        <div id="data-display">等待資料中...</div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // 連線到後端伺服器
+        const socket = io();
+        const statusEl = document.getElementById('status');
+        const dataEl = document.getElementById('data-display');
+
+        // 監聽連線成功事件
+        socket.on('connect', () => {
+            statusEl.innerText = '已連線';
+            statusEl.style.color = '#28a745';
+        });
+
+        // 監聽連線斷開事件
+        socket.on('disconnect', () => {
+            statusEl.innerText = '斷線';
+            statusEl.style.color = '#dc3545';
+        });
+
+        // 接收來自 Node.js 的 Arduino 訊號
+        socket.on('arduino-data', (data) => {
+            // 更新網頁上的文字
+            dataEl.innerText = data;
+        });
+    </script>
+</body>
+</html>

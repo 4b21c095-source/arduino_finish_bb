@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Frequency Scanner</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ex1.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+</head>
+
+<body>
+
+<section id="scan" class="scan-section">
+
+  <div style="text-align: center;">
+    <h2 class="section-title">★聲波掃描..</h2>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: -10px; margin-bottom: 15px;">
+      系統狀態：<span id="status">初始化中...</span> | 
+      <span id="modelName" style="display:none;"></span>
+    </div>
+  </div>
+
+  <div class="main-group">
+
+    <div class="camera-frame">
+      <canvas id="webcam-canvas" style="display: none;"></canvas>
+      <div id="camera" style="color: #fff; text-align: center; padding: 100px 0;">鏡頭畫面載入中...</div>
+    </div>
+
+    <div class="dialog" id="result">
+      <h2 id="hzText">準備掃描中...</h2>
+      
+      <img id="resultImage" class="result-img" style="display: none;">
+
+      <div class="sound-buttons"></div>
+    </div>
+
+  </div>
+</section>
+
+<button class="back-btn" onclick="window.location.href='/ex1.html'">BACK✰</button>
+
+<script src="ex1.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+/* 🌸 日系粉嫩空氣感可愛風格 CSS 🌸 */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #EBF6FC 0%, #F5EFF7 100%); 
+    font-family: "Noto Sans TC", sans-serif;
+    color: #4A5568;      
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 讓內容從頂部依序和諧排列 */
+    overflow: hidden;
+    position: relative;
+}
+
+/* 🎛️ 上方操作與數據控制台面板 (和諧均勻分布) */
+.top-dashboard {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* 均勻左右排開 */
+    box-shadow: 0 8px 32px rgba(166, 218, 250, 0.08);
+    z-index: 100;
+}
+
+/* 當螢幕較窄時自動美化換行 */
+@media (max-width: 650px) {
+    .top-dashboard {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+/* 📊 Barcode 密集音頻圖外框 */
+#visualizer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;       
+}
+.vis-title {
+    font-size: 9px;
+    color: #FFBF99; 
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+#micVisualizer {
+    background: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #EBF6FC;
+}
+
+/* 📝 主標題群組 */
+.title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #64B5F6; 
+    text-shadow: 2px 2px 0px #FFF, 4px 4px 12px rgba(100, 181, 246, 0.15);
+    margin: 0 0 4px 0;
+}
+.sub {
+    font-size: 1rem;
+    color: #8A9AAB;
+    margin: 0;
+    font-weight: 500;
+}
+#volumeText {
+    color: #FFBF99; 
+    font-weight: 700;
+}
+
+/* 🟢 開始偵測按鈕 */
+#startBtn {
+    padding: 12px 30px;
+    border: none;
+    background: #A6DAFA; 
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50px; 
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(166, 218, 250, 0.35);
+    transition: all 0.25s ease;
+}
+#startBtn:hover {
+    background: #80C7F7;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(166, 218, 250, 0.5);
+}
+#startBtn:disabled {
+    background: #D2E9FA;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* 🎈 遊戲核心主舞台區 (蓋滿全螢幕以實施絕對正中央置中) */
+#gameArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#bgBalloonArea {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* 🎈 【核心大修正】比例放大版正宗氣球（基礎尺寸拉大，並鎖定全螢幕絕對置中） */
+.balloon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 利用 translate 鎖定正中央軸心 */
+    transform: translate(-50%, -50%) scale(0.35); 
+    width: 240px;  /* 基礎寬度從 135px 放大至 240px */
+    height: 285px; /* 基礎高度從 160px 放大至 285px */
+    background: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(235,246,252,0.65) 100%); 
+    border: 5px solid #A6DAFA; 
+    box-shadow: 
+        inset 0 -15px 30px rgba(166, 218, 250, 0.2),
+        inset 0 15px 30px rgba(255, 255, 255, 0.9),
+        0 15px 40px rgba(166, 218, 250, 0.2);             
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+/* 氣球正中央笑臉 (配合大氣球等比例放大) */
+.balloon-face {
+    font-size: 58px; /* 從 34px 大幅放大至 58px */
+    color: #64B5F6;
+    font-weight: bold;
+    user-select: none;
+    margin-top: -25px; 
+}
+
+/* 氣球左上角精緻高光點 */
+.balloon::before {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px 30px 0 0; 
+    transform: rotate(-45deg);
+    top: 35px;
+    left: 40px;
+}
+
+/* 📐 氣球打結三角形尾巴 (配合大氣球等比例放大) */
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -22px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 24px solid #A6DAFA; 
+}
+
+/* 💥 氣球爆炸動畫 (維持正中心碎裂) */
+.pop {
+    animation: popAnimate 0.18s ease-out forwards !important;
+}
+@keyframes popAnimate {
+    0% { border-color: #FFBF99; }
+    100% { transform: translate(-50%, -50%) scale(3.5) !important; opacity: 0; filter: blur(4px); }
+}
+
+/* 🫧 背景隨機裝飾小飄浮氣球 */
+.bg-balloon {
+    position: absolute;
+    width: 30px;
+    height: 36px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    pointer-events: none; 
+    bottom: -100px;        
+    animation: floatUp 7s linear infinite;
+}
+.bg-balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 5px solid #A6DAFA;
+}
+@keyframes floatUp {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.35; }
+    90% { opacity: 0.35; }
+    100% { transform: translateY(-110vh) translateX(40px) rotate(45deg); opacity: 0; }
+}
+
+/* 🔙 BACK 返回按鈕 */
+.btn01 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    color: #A0AEC0;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 100;
+}
+.btn01:hover {
+    background-color: #F8FAFC;
+    color: #4A5568;
+    border-color: #CBD5E1;
+}
+
+/* 🪟 彈出視窗樣式 */
+.modal {
+    position: fixed;
+    z-index: 999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(244, 249, 252, 0.85); 
+    backdrop-filter: blur(8px); 
+    display: none;
+}
+.modalContent {
+    background-color: #FFFFFF; 
+    margin: 15% auto;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    width: 70%;
+    max-width: 400px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(166, 218, 250, 0.25);
+    position: relative;
+}
+#closeModal {
+    color: #A0AEC0;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#closeModal:hover {
+    color: #FFBF99;
+}

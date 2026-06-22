@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>日系粉嫩風 - 氣球爆裂數值分析</title>
+    <link rel="stylesheet" href="clap01.css">
+</head>
+<body>
+
+    <div class="top-dashboard">
+        <div id="visualizer-container">
+            <span class="vis-title">SIGNAL FREQ</span>
+            <canvas id="micVisualizer" width="150" height="50"></canvas>
+        </div>
+
+        <div class="title-group">
+            <h1>AH! HA! PA!</h1>
+            <p class="sub">目前聲音數值: <span id="volumeText">600</span></p>
+        </div>
+
+        <button id="startBtn">AH~~~~~~~~!</button>
+    </div>
+
+    <div id="gameArea">
+        <div id="bgBalloonArea"></div>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modalContent">
+        <span id="closeModal">✕</span>
+        <h2>🎈 氣球爆炸了！</h2>
+        <p id="resultVolume" style="font-size: 1.3rem; font-weight: bold; color: #FFBF99;"></p>
+        <p id="resultInfo">好厲害的聲音！氣球成功的膨脹到了 2.5 倍極限！</p>
+      </div>
+    </div>
+
+    <button class="btn01" onclick="window.location.href='/ex1.html'">BACK</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="clap01.js"></script>
+</body>
+</html>
